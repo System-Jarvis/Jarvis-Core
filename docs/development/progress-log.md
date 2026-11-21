@@ -38,11 +38,7 @@ The foundational J.A.R.V.I.S. Core documentation has been created, reviewed, and
 - [x] Completed the foundational documentation audit
 - [x] Verified the required files and pull request merges
 - [x] Updated the Development Roadmap to reflect Phase 0 completion
-- [x] Complete initial server configuration
-- [x] Verify network connectivity
-- [x] Configure and verify remote management access
-- [x] Record final server hardware specifications
-- [x] Validate the hosting environment
+
 
 ### Follow-Up Documentation
 
@@ -52,12 +48,25 @@ The foundational J.A.R.V.I.S. Core documentation has been created, reviewed, and
 
 ### Completed Work
 
-- Acquired four Supermicro / Thinkmate servers
-- Acquired the APC NetShelter AR1000A cabinet
-- Installed three working servers in the rack
-- Successfully powered on the primary J.A.R.V.I.S. server
-- Replaced incorrectly installed rack rails
-- Resolved rack door clearance issues by repositioning the rack rails and reseating the servers
+- [x] Acquired four Supermicro / Thinkmate servers
+- [x] Acquired the APC NetShelter AR1000A cabinet
+- [x] Installed three working servers in the rack
+- [x] Successfully powered on the primary J.A.R.V.I.S. server
+- [x] Replaced incorrectly installed rack rails
+- [x] Resolved rack door clearance issues by repositioning the rack rails and reseating the servers
+- [x] Complete initial server configuration
+- [x] Verify network connectivity
+- [x] Configure and verify remote management access
+- [x] Record final server hardware specifications
+- [x] Validate the hosting environment
+
+## Phase 2 - Development of JarvisV1 and Environment Configuration 
+
+### Completed Work
+- [x] Download Ollama to run models on server
+- [x] Test multiple models to find optimal one
+- [x] Choose final model
+- [x] Add Jarvis identity
 
 ### Current Activities
 
@@ -102,10 +111,6 @@ ollama --version #Version 0.40.16
 ### Test first models
 ollama run llama3.2
 ollama run llama3.2 "Who is JARVIS from the MCU?"
-
-
-### Prevent the current model from unloading
-ollama run 11ama3.2 --keep-alive -1
 
 ### Notes 
 Jarvis ran a 3B model by default and generated tokens incredibly quickly. Once the model loads in, within like 3-5 seconds, it generates text at a rapid pace. Because the model was small, it wasn't always perfect, however it was a competent and real response very rapidly. This gives a good sign for the future.
