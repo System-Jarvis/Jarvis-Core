@@ -38,6 +38,11 @@ The foundational J.A.R.V.I.S. Core documentation has been created, reviewed, and
 - [x] Completed the foundational documentation audit
 - [x] Verified the required files and pull request merges
 - [x] Updated the Development Roadmap to reflect Phase 0 completion
+- [x] Complete initial server configuration
+- [x] Verify network connectivity
+- [x] Configure and verify remote management access
+- [x] Record final server hardware specifications
+- [x] Validate the hosting environment
 
 ### Follow-Up Documentation
 
@@ -56,17 +61,15 @@ The foundational J.A.R.V.I.S. Core documentation has been created, reviewed, and
 
 ### Current Activities
 
-- Preparing the primary server for its intended workloads
-- Evaluating server storage and configuration requirements
-- Planning network connectivity and remote management
+- Creating WebUI environment
+- Becoming familiar with WebUI
+- Research GPU and SSD upgrades
 
 ### Remaining Milestones
-
-- [ ] Complete initial server configuration
-- [ ] Verify network connectivity
-- [ ] Configure and verify remote management access
-- [ ] Record final server hardware specifications
-- [ ] Validate the hosting environment
+- [ ] Create WebUI for connecting to and speaking to Jarvis
+- [ ] Create Official JarvisV1 model
+- [ ] Reformat this documentation
+- [ ] Begin learning Rust code
 
 ## Known Issues and Blockers
 
@@ -76,7 +79,7 @@ Remote access to the primary J.A.R.V.I.S. server has not yet been verified.
 
 Related GitHub Issue: [#1 — Accessing the JARVIS Server for Initial Connection](https://github.com/System-Jarvis/Jarvis-Core/issues/1)
 
-**Status:** Open — Phase 1
+**Status:** Open — Phase 2
 
 ---
 
@@ -85,3 +88,26 @@ Related GitHub Issue: [#1 — Accessing the JARVIS Server for Initial Connection
 **Documentation Phase:** Phase 0 — Base Documentation
 
 **Infrastructure Phase:** Phase 1 — Server Infrastructure Setup
+
+**First Established AI:** Phase 2 -
+
+
+
+# Notes Which need to be reformatted 11/21//2026
+
+### Installed Ollama to run first generation of AI models
+sudo curl -fsSL https://ollama.com/install.sh | sh 
+ollama --version #Version 0.40.16
+
+### Test first models
+ollama run llama3.2
+ollama run llama3.2 "Who is JARVIS from the MCU?"
+
+
+### Prevent the current model from unloading
+ollama run 11ama3.2 --keep-alive -1
+
+### Notes 
+Jarvis ran a 3B model by default and generated tokens incredibly quickly. Once the model loads in, within like 3-5 seconds, it generates text at a rapid pace. Because the model was small, it wasn't always perfect, however it was a competent and real response very rapidly. This gives a good sign for the future.
+
+It was opted to use a larger model going forward, so the model from here on out will be `llama3:8b`
