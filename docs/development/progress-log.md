@@ -1,23 +1,28 @@
-
 # J.A.R.V.I.S. — Development Progress Log
 
 ## Overview
 
-This document records significant development activities, completed milestones, ongoing work, and known issues throughout the J.A.R.V.I.S. project.
+This document records significant development activities, completed milestones, ongoing work, technical achievements, and known issues throughout the J.A.R.V.I.S. project.
+
+The Progress Log serves as a historical record of development across all project phases.
 
 ## Current Project Status
 
 **Phase 0:** Base Documentation — Complete
 
-**Phase 1:** Server Infrastructure Setup — In Progress
+**Phase 1:** Server Infrastructure Setup — Complete
+
+**Phase 1.5:** Future Feature Planning and Documentation — Planned
+
+**Phase 2:** Core AI Development — In Progress
+
+---
 
 ## Phase 0 — Base Documentation
 
 **Status:** Complete
 
 ### Phase 0 Completion — November 19, 2026
-
-The foundational J.A.R.V.I.S. Core documentation has been created, reviewed, and merged.
 
 ### Completed Work
 
@@ -39,80 +44,174 @@ The foundational J.A.R.V.I.S. Core documentation has been created, reviewed, and
 - [x] Verified the required files and pull request merges
 - [x] Updated the Development Roadmap to reflect Phase 0 completion
 
-
 ### Follow-Up Documentation
 
-- [ ] Reconcile the System-Jarvis organization roadmap with the approved Jarvis-Core phase definitions.
+- [x] Reconciled the System-Jarvis organization roadmap with the approved Jarvis-Core phase definitions.
+
+---
 
 ## Phase 1 — Server Infrastructure Setup
 
-### Completed Work
+**Status:** Complete
+
+### Objective
+
+Establish a functional, accessible, and validated server environment capable of supporting the initial development of J.A.R.V.I.S.
+
+### Completed Hardware Work
 
 - [x] Acquired four Supermicro / Thinkmate servers
 - [x] Acquired the APC NetShelter AR1000A cabinet
 - [x] Installed three working servers in the rack
 - [x] Successfully powered on the primary J.A.R.V.I.S. server
 - [x] Replaced incorrectly installed rack rails
-- [x] Resolved rack door clearance issues by repositioning the rack rails and reseating the servers
-- [x] Complete initial server configuration
-- [x] Verify network connectivity
-- [x] Configure and verify remote management access
-- [x] Record final server hardware specifications
-- [x] Validate the hosting environment
+- [x] Resolved rack door-clearance issues by repositioning the rails and reseating the servers
+- [x] Installed a 1 TB 2.5-inch SATA HDD in the primary server
+- [x] Verified CPU, memory, and storage functionality
 
-## Phase 2 - Development of JarvisV1 and Environment Configuration 
+### Operating System Installation
 
-### Completed Work
-- [x] Download Ollama to run models on server
-- [x] Test multiple models to find optimal one
-- [x] Choose final model
-- [x] Add Jarvis identity
+**Operating System:** Debian GNU/Linux 13 (Trixie)
+
+**Hostname:** Jarvis
+
+**Primary Storage:** 1 TB 2.5-inch SATA HDD
+
+The operating system was installed directly onto the server's internal storage.
+
+### Initial Server Configuration
+
+- [x] Completed the Debian installation
+- [x] Configured administrator privileges for the primary user
+- [x] Verified internet connectivity and DNS resolution
+- [x] Configured network time synchronization
+- [x] Installed and configured Tailscale
+- [x] Verified SSH service availability
+- [x] Configured and tested SSH public-key authentication
+- [x] Successfully restarted the server
+- [x] Verified SSH and Tailscale connectivity after reboot
+
+### System Health Verification
+
+A post-installation health check was completed during Phase 1.
+
+**Reported Results:**
+
+| Component | Result |
+|---|---|
+| System uptime | 1 day, 1 hour, 1 minute |
+| Total reported memory | 62 GiB |
+| Available memory | Approximately 61 GiB |
+| Swap capacity | 48 GiB |
+| Root filesystem | `/dev/sda2` |
+| Root filesystem capacity | 868 GB |
+| Root filesystem utilization | 2% |
+| CPU load average | 0.00, 0.00, 0.00 |
+| SSH service | Active |
+| Tailscale service | Active |
+| System time synchronization | Active |
+| NTP synchronized | Yes |
+| Other failed services | None detected |
+| NVIDIA Persistence Daemon | Failed; deferred |
+
+---
+
+## Phase 2 — Core AI Development
+
+**Status:** In Progress
+
+### Objective
+
+To create the first J.A.R.V.I.S. prototype.
+
+### Ollama Installation
+
+**Runtime:** Ollama
+
+**Reported Version:** 0.40.16
+
+**Installation Command:**
+
+`curl -fsSL https://ollama.com/install.sh | sh`
+
+Ollama was successfully installed and used for initial model inference testing.
+
+### Initial Model Testing
+
+**Model Tested:** `llama3.2`
+
+**Reported Model Size:** 3B parameters
+
+**Test Commands:**
+
+`ollama run llama3.2`
+
+`ollama run llama3.2 "Who is JARVIS from the MCU?"`
+
+### Testing Observations
+
+It was reported that the initial 3B model generated responses rapidly after loading.
+
+The initial loading period was approximately three to five seconds in the observed test, followed by rapid text generation.
+
+The model produced competent responses, although its smaller size introduced limitations in answer quality.
+
+### Model Selection
+
+**Selected Next Model:** `llama3:8b`
+
+Following initial testing, we opted to pursue the larger 8B model for continued development.
+
+### Initial J.A.R.V.I.S. Identity Configuration
+
+- [x] Add initial J.A.R.V.I.S. identity to the AI prototype.
+
+It was confirmed that the initial J.A.R.V.I.S. identity work
+was completed during Phase 2 development.
 
 ### Current Activities
 
-- Creating WebUI environment
-- Becoming familiar with WebUI
-- Research GPU and SSD upgrades
+- Developing and becoming familiar with the WebUI environment
+- Continuing local language model experimentation
+- Researching GPU upgrades
+- Researching SSD upgrades
+- Preparing the first JarvisV1 prototype
 
 ### Remaining Milestones
-- [ ] Create WebUI for connecting to and speaking to Jarvis
-- [ ] Create Official JarvisV1 model
-- [ ] Reformat this documentation
-- [ ] Begin learning Rust code
 
-## Known Issues and Blockers
+- [ ] Develop a usable WebUI for interacting with Jarvis
+- [ ] Establish and document the official JarvisV1 prototype
+- [ ] Evaluate model performance and suitability
+- [ ] Document model configuration and identity
+- [ ] Formalize Phase 2 architecture and technical requirements
 
-### Initial Server Access
+---
 
-Remote access to the primary J.A.R.V.I.S. server has not yet been verified.
+## Phase 1.5 — Future Feature Planning and Documentation
 
-Related GitHub Issue: [#1 — Accessing the JARVIS Server for Initial Connection](https://github.com/System-Jarvis/Jarvis-Core/issues/1)
+**Status:** Planned
 
-**Status:** Open — Phase 2
+**Nature:** Parallel planning initiative
+
+### Objective
+
+Research, document, and organize possible future J.A.R.V.I.S. capabilities before implementation.
+
+### Planned Activities
+
+- Develop structured feature proposals
+- Document potential integrations and dependencies
+- Assess technical feasibility
+- Identify relevant J.A.N. agents
+- Create GitHub issues for approved feature proposals
+- Associate future features with appropriate development phases
+
+This initiative is intended to run alongside ongoing development without disrupting the established roadmap.
 
 ---
 
 **Project:** J.A.R.V.I.S.
 
-**Documentation Phase:** Phase 0 — Base Documentation
+**Last Updated:** November 22, 2026
 
-**Infrastructure Phase:** Phase 1 — Server Infrastructure Setup
-
-**First Established AI:** Phase 2 -
-
-
-
-# Notes Which need to be reformatted 11/21//2026
-
-### Installed Ollama to run first generation of AI models
-sudo curl -fsSL https://ollama.com/install.sh | sh 
-ollama --version #Version 0.40.16
-
-### Test first models
-ollama run llama3.2
-ollama run llama3.2 "Who is JARVIS from the MCU?"
-
-### Notes 
-Jarvis ran a 3B model by default and generated tokens incredibly quickly. Once the model loads in, within like 3-5 seconds, it generates text at a rapid pace. Because the model was small, it wasn't always perfect, however it was a competent and real response very rapidly. This gives a good sign for the future.
-
-It was opted to use a larger model going forward, so the model from here on out will be `llama3:8b`
+**Documentation Status:** Phase 1 Finalization in Progress
