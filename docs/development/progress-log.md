@@ -116,77 +116,6 @@ A post-installation health check was completed during Phase 1.
 
 ---
 
-## Phase 2 — Core AI Development
-
-**Status:** In Progress
-
-### Objective
-
-To create the first J.A.R.V.I.S. prototype.
-
-### Ollama Installation
-
-**Runtime:** Ollama
-
-**Reported Version:** 0.40.16
-
-**Installation Command:**
-
-`curl -fsSL https://ollama.com/install.sh | sh`
-
-Ollama was successfully installed and used for initial model inference testing.
-
-### Initial Model Testing
-
-**Model Tested:** `llama3.2`
-
-**Reported Model Size:** 3B parameters
-
-**Test Commands:**
-
-`ollama run llama3.2`
-
-`ollama run llama3.2 "Who is JARVIS from the MCU?"`
-
-### Testing Observations
-
-It was reported that the initial 3B model generated responses rapidly after loading.
-
-The initial loading period was approximately three to five seconds in the observed test, followed by rapid text generation.
-
-The model produced competent responses, although its smaller size introduced limitations in answer quality.
-
-### Model Selection
-
-**Selected Next Model:** `llama3:8b`
-
-Following initial testing, we opted to pursue the larger 8B model for continued development.
-
-### Initial J.A.R.V.I.S. Identity Configuration
-
-- [x] Add initial J.A.R.V.I.S. identity to the AI prototype.
-
-It was confirmed that the initial J.A.R.V.I.S. identity work
-was completed during Phase 2 development.
-
-### Current Activities
-
-- Developing and becoming familiar with the WebUI environment
-- Continuing local language model experimentation
-- Researching GPU upgrades
-- Researching SSD upgrades
-- Preparing the first JarvisV1 prototype
-
-### Remaining Milestones
-
-- [ ] Develop a usable WebUI for interacting with Jarvis
-- [ ] Establish and document the official JarvisV1 prototype
-- [ ] Evaluate model performance and suitability
-- [ ] Document model configuration and identity
-- [ ] Formalize Phase 2 architecture and technical requirements
-
----
-
 ## Phase 1.5 — Future Feature Planning and Documentation
 
 **Status:** Planned
@@ -207,6 +136,167 @@ Research, document, and organize possible future J.A.R.V.I.S. capabilities befor
 - Associate future features with appropriate development phases
 
 This initiative is intended to run alongside ongoing development without disrupting the established roadmap.
+
+---
+
+## Phase 2 — Core AI Development
+
+**Status:** Complete
+
+**Primary Workstream:** JarvisV1 Development and Environment Configuration
+
+### Objective
+
+Develop the first functional J.A.R.V.I.S. artificial intelligence prototype capable of running locally, interacting with operators through a conversational interface, and accessing authorized server diagnostics.
+
+### AI Runtime and Model Development
+
+**Runtime:** Ollama
+
+**Final V1 Model:** `llama3.1:8b`
+
+**Operating System:** Debian GNU/Linux 13 (Trixie)
+
+**Development Server:** Jarvis
+
+#### Initial Model Testing
+
+Development began with Ollama installation and preliminary testing of smaller local language models.
+
+The initial `llama3.2` 3B model successfully generated responses and demonstrated promising inference performance.
+
+Jeffrey initially selected `llama3:8b` for continued experimentation.
+
+Following further development, `llama3.1:8b` was selected as the JarvisV1 model.
+
+#### Completed Work
+
+- [x] Install and configure Ollama.
+- [x] Run local language models successfully.
+- [x] Test preliminary model performance.
+- [x] Select Llama 3.1 8B for JarvisV1.
+- [x] Configure the initial J.A.R.V.I.S. identity.
+- [x] Create and merge the V1 system prompt.
+- [x] Integrate the approved system prompt into `frontend.py`.
+- [x] Test JarvisV1's identity and behavioral responses.
+
+### Chainlit WebUI Development
+
+A functional conversational interface was developed using Chainlit.
+
+**Application Entry Point:** `~/Jarvis/app/frontend.py`
+
+**Python Virtual Environment:** `~/Jarvis/venv`
+
+**Interface Framework:** Chainlit
+
+#### Completed Work
+
+- [x] Install and configure Chainlit.
+- [x] Connect Chainlit to the Ollama runtime.
+- [x] Establish a working conversational interface.
+- [x] Enable access to the WebUI through Tailscale.
+- [x] Implement initial interface branding and customization.
+- [x] Integrate the approved J.A.R.V.I.S. V1 system prompt.
+- [x] Document WebUI activation and access procedures.
+
+**Reference Documentation:** `docs/activation/chainlit-web-ui.md`
+
+### System Diagnostics Integration
+
+JarvisV1 was configured to access authorized server information and produce read-only system diagnostic reports.
+
+#### Verified Capabilities
+
+- CPU utilization reporting
+- CPU temperature reporting
+- Memory and swap utilization
+- Storage utilization
+- System uptime
+- Process information
+- Structured system health reports
+
+### JarvisV1 Testing
+
+#### Test 1 — Identity and Purpose
+
+**Result:** Pass with observations
+
+Jarvis successfully identified himself as J.A.R.V.I.S. and described his intended responsibilities.
+
+His response demonstrated the professional communication style established in the V1 system prompt.
+
+Additional refinement may be beneficial when distinguishing currently implemented capabilities from the future J.A.N. architecture.
+
+#### Test 2 — Hardware Diagnostics
+
+**Result:** Functional with an identified accuracy issue
+
+Jarvis successfully reported actual server temperature sensor readings.
+
+However, Celsius-to-Fahrenheit conversions were incorrect in the initial conversational response.
+
+The conversion correction has been deferred.
+
+#### Test 3 — Technical Troubleshooting
+
+**Result:** Partial Pass
+
+Jarvis demonstrated an understanding of Linux systemd troubleshooting procedures.
+
+His response recommended reasonable diagnostic commands without immediately suggesting disruptive changes.
+
+Two limitations were observed:
+
+- Jarvis provided multiple troubleshooting steps despite being asked to proceed one step at a time.
+- The response was truncated after reaching the configured output-token limit.
+
+The output-token improvement has been deferred.
+
+#### Test 4 — Structured System Health Reporting
+
+**Result:** Pass
+
+Jarvis generated a timestamped system health report using live measurements.
+
+The report distinguished collected telemetry from AI-generated interpretation and acknowledged unavailable fan-speed measurements.
+
+### Runtime Verification
+
+The following checks were completed:
+
+- [x] Verify the Ollama service is active.
+- [x] Verify the Ollama server process is running.
+- [x] Verify the Chainlit application process is running.
+- [x] Confirm Chainlit remains operational after an SSH disconnection.
+- [x] Identify the running Chainlit process and application directory.
+- [x] Verify the current application uses the existing Python virtual environment.
+
+Chainlit currently runs through a user login session rather than a dedicated systemd service.
+
+Automatic WebUI startup following a server reboot and automatic recovery after application failures have not been verified.
+
+The development team elected to defer dedicated service configuration.
+
+### Phase 2 Documentation
+
+- [x] Create and merge the official J.A.R.V.I.S. V1 system prompt.
+- [x] Create and merge the Chainlit WebUI activation guide.
+- [x] Document initial model experiments.
+- [x] Verify the primary JarvisV1 capabilities.
+- [ ] Merge the Phase 2 finalization documentation.
+
+### Known Limitations
+
+JarvisV1 is a functional development prototype, not a production-ready deployment.
+
+The following improvements have been deferred:
+
+- Output-token limit and response truncation
+- Celsius-to-Fahrenheit conversion accuracy
+- Automatic startup and crash recovery
+- Additional instruction-following refinements
+- Further AI-based system health analysis testing
 
 ---
 
